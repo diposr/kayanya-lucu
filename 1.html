@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apakah Kamu Shafa?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #FFCCE5;
+      background-image: url('https://www.transparenttextures.com/patterns/rose-wood.png');
+      background-repeat: repeat;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 5px solid #A8D5BA;
+    }
+    .question {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .button {
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .button-yes {
+      background-color: #A8D5BA;
+      color: white;
+      font-weight: 600;
+    }
+    .button-yes:hover {
+      background-color: #98C8A2;
+    }
+    .button-no {
+      background-color: #FF6F61;
+      color: white;
+      font-weight: 600;
+    }
+    .button-no:hover {
+      background-color: #FF5A4F;
+    }
+    .response {
+      font-size: 22px;
+      font-weight: 400;
+      margin-top: 20px;
+    }
+    .emoji {
+      position: absolute;
+      font-size: 30px;
+      z-index: 10;
+      animation: fall 3s linear infinite;
+    }
+    @keyframes fall {
+      0% { top: -50px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="question">
+      Apakah kamu Shafa?
+    </div>
+    <div class="buttons">
+      <button class="button button-yes" onclick="redirectToPantun()">Yes</button>
+      <button class="button button-no" onclick="showResponse('No')">No</button>
+    </div>
+    <div id="response" class="response"></div>
+  </div>
+
+  <script>
+    function redirectToPantun() {
+      // Mengarahkan ke halaman pantun setelah menekan Yes
+      window.location.href = "pantun.html"; // Ganti dengan nama halaman yang sesuai
+    }
+
+    function showResponse(answer) {
+      const responseDiv = document.getElementById('response');
+      if (answer === 'Yes') {
+        // Halaman akan diarahkan ke pantun.html oleh fungsi redirectToPantun
+      } else {
+        responseDiv.innerHTML = "Ihh, jangan bercanda dong! 😡";
+        createAngryEmojis();
+      }
+    }
+
+    function createAngryEmojis() {
+      const body = document.body;
+      const emojiCount = 5;
+      const angryEmojis = ["😡", "😠", "😤", "🤬", "💢"];
+
+      for (let i = 0; i < emojiCount; i++) {
+        const emoji = document.createElement('div');
+        emoji.classList.add('emoji');
+        emoji.innerHTML = angryEmojis[Math.floor(Math.random() * angryEmojis.length)];
+        emoji.style.left = `${Math.random() * 100}vw`;
+        body.appendChild(emoji);
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
